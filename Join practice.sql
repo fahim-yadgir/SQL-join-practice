@@ -43,3 +43,13 @@ select * from Mouse_sale;
 select product , sum(amount)as total_amount
 from orders
 group by product;
+
+
+create view Laptop_sale as
+(
+select c.customer_id , c.customer_name ,o.product , o.amount , sum(amount) over(order by order_date)as runnig_amount
+from customers c 
+right join orders o on c.customer_id = o.customer_id
+where o.product = 'Laptop'
+);
+select * from Laptop_sale;
