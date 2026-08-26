@@ -30,3 +30,16 @@ inner join orders o on c.customer_id = o.customer_id
 where o.order_date between '2023-06-03' and '2023-06-14'
 group by c.customer_name , o.product;
 
+
+create view Mouse_sale as
+(
+select c.customer_id , c.customer_name ,o.product , o.amount , sum(amount) over(order by order_date)as runnig_amount
+from customers c 
+right join orders o on c.customer_id = o.customer_id
+where o.product = 'Mouse'
+);
+select * from Mouse_sale;
+
+select product , sum(amount)as total_amount
+from orders
+group by product;
