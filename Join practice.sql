@@ -73,3 +73,7 @@ where o.product = 'SSD'
 );
 select * from SSD_sale;
 
+select o.order_id , c.customer_name , o.amount
+from orders o 
+left join customers c on c.customer_id = o.customer_id
+where c.customer_name = 'Bhavna Shah';
