@@ -83,3 +83,10 @@ select customer_name , count(*)as total_count
 from customers
 group by customer_name
 order by total_count desc;
+
+
+select o.customer_id ,o.product ,c.customer_name, sum(o.amount)as total_amount
+from orders o
+left join customers c on c.customer_id = o.customer_id
+where o.customer_id = 34
+group by o.customer_id,o.product,c.customer_name;
