@@ -97,3 +97,10 @@ from customers c
 right join orders o on c.customer_id = o.customer_id
 group by c.customer_id ,c.customer_name 
 having sum(o.amount) >  90000;
+
+select c.customer_id , c.customer_name ,o.product, sum(o.amount)as total_amount
+from customers c
+inner join orders o on c.customer_id = o.customer_id
+group by c.customer_id , c.customer_name ,o.product
+order by total_amount desc;
+
