@@ -104,3 +104,6 @@ inner join orders o on c.customer_id = o.customer_id
 group by c.customer_id , c.customer_name ,o.product
 order by total_amount desc;
 
+select c.customer_id, c.customer_name , c.city , o.product , o.order_date , sum(amount) over(order by o.order_date)as runnig_amount
+from customers c
+right join orders o on c.customer_id = o.customer_id;
