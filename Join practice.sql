@@ -107,3 +107,24 @@ order by total_amount desc;
 select c.customer_id, c.customer_name , c.city , o.product , o.order_date , sum(amount) over(order by o.order_date)as runnig_amount
 from customers c
 right join orders o on c.customer_id = o.customer_id;
+
+drop procedure change_city;
+
+delimiter $$
+create procedure change_city
+(
+in c_id int,
+in c_city text
+)
+begin 
+update customers 
+set city = c_city
+where customer_id = c_id;
+select * from customers;
+end $$
+delimiter ;
+start transaction;
+call change_city(1,"Bangalore");
+commit;
+
+rollback;
