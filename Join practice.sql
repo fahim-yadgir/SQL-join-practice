@@ -124,7 +124,7 @@ select * from customers;
 end $$
 delimiter ;
 start transaction;
-call change_city(1,"Bangalore");
+call change_city(2,"Pune");
 commit;
 
 rollback;
