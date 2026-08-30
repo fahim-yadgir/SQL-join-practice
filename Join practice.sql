@@ -128,3 +128,7 @@ call change_city(1,"Bangalore");
 commit;
 
 rollback;
+
+select customer_id , count(*)as total_count
+from orders
+group by customer_id;
