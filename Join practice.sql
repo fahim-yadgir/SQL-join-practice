@@ -132,3 +132,8 @@ rollback;
 select customer_id , count(*)as total_count
 from orders
 group by customer_id;
+
+select c.customer_name , city , o.product , o.amount , sum(o.amount) over(order by order_date)as runnig_total
+from customers c
+right join orders o on c.customer_id = o.customer_id
+where o.product = 'SSD';
