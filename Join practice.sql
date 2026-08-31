@@ -160,5 +160,8 @@ delete from customers
 where customer_name = "";
 commit;
 
-
+select product,sum(amount) as total_amount,count(order_date)as total_order
+from orders 
+group by product
+having count(order_date) > 1;
 
