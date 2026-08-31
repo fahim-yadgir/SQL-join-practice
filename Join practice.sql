@@ -137,3 +137,9 @@ select c.customer_name , city , o.product , o.amount , sum(o.amount) over(order 
 from customers c
 right join orders o on c.customer_id = o.customer_id
 where o.product = 'SSD';
+
+select c.customer_name , c.city , o.product , o.amount , c.signup_date as signup_date ,o.order_date as order_date
+from customers c
+right join orders o on c.customer_id = o.customer_id
+where o.amount > 30000
+order by order_date ,signup_date asc;
