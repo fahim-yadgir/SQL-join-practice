@@ -150,3 +150,15 @@ left join customers c on c.customer_id = o.customer_id
 group by c.customer_name , o.product 
 having sum(o.amount) > 50000
 order by  o.product;
+
+select c.customer_name , o.product , sum(o.amount) over(order by o.order_date) as total_amount
+from orders o
+left join customers c on c.customer_id = o.customer_id;
+
+start transaction;
+delete from customers 
+where customer_name = "";
+commit;
+
+
+
