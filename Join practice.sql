@@ -143,3 +143,10 @@ from customers c
 right join orders o on c.customer_id = o.customer_id
 where o.amount > 30000
 order by order_date ,signup_date asc;
+
+select c.customer_name , o.product , sum(o.amount)as total_amount
+from orders o
+left join customers c on c.customer_id = o.customer_id
+group by c.customer_name , o.product 
+having sum(o.amount) > 50000
+order by  o.product;
