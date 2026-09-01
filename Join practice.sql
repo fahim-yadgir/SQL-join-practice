@@ -175,4 +175,5 @@ rollback;
 
 select c.customer_name , c.city , o.product ,o.amount
 from orders o
-left join customers c on c.customer_id = o.customer_id;
+left join customers c on c.customer_id = o.customer_id
+where c.city = 'Pune';
