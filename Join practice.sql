@@ -165,3 +165,10 @@ from orders
 group by product
 having count(order_date) > 1;
 
+
+start transaction;
+update orders
+set product = "SSD"
+where order_id = 101;
+commit;
+rollback;
