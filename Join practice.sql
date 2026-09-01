@@ -172,3 +172,7 @@ set product = "SSD"
 where order_id = 101;
 commit;
 rollback;
+
+select c.customer_name , c.city , o.product ,o.amount
+from orders o
+left join customers c on c.customer_id = o.customer_id;
