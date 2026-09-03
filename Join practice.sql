@@ -177,3 +177,8 @@ select c.customer_name , c.city , o.product ,o.amount
 from orders o
 left join customers c on c.customer_id = o.customer_id
 where c.city = 'Pune';
+
+select c.customer_name , c.city , o.product , o.amount , o.order_date
+from orders o 
+inner join customers c on c.customer_id = o.customer_id
+where o.order_date between '2023-07-29' and '2023-10-30' ;
