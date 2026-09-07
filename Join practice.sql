@@ -186,3 +186,6 @@ where o.order_date between '2023-07-29' and '2023-10-30' ;
 select c.customer_name , o.product , o.amount , rank() over(order by o.amount desc)as ranks
 from customers c
 join orders o on c.customer_id = o.customer_id;
+
+select customer_id , product , amount , order_date,rank()over(order by order_date desc)as dens_rank
+from orders;
