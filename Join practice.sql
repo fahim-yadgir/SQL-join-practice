@@ -189,3 +189,7 @@ join orders o on c.customer_id = o.customer_id;
 
 select customer_id , product , amount , order_date,rank()over(order by order_date desc)as dens_rank
 from orders;
+
+select c.customer_name , o.product , o.amount ,dense_rank()over(order by o.amount desc)as ranks
+from customers c
+left join orders o on c.customer_id = o.customer_id
