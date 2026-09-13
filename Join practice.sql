@@ -192,4 +192,14 @@ from orders;
 
 select c.customer_name , o.product , o.amount ,dense_rank()over(order by o.amount desc)as ranks
 from customers c
-left join orders o on c.customer_id = o.customer_id
+left join orders o on c.customer_id = o.customer_id;
+
+select c.customer_name , c.city , o.product , o.amount , o.order_date
+from customers c
+join orders o on c.customer_id = o.customer_id
+where o.product = "Laptop" and o.order_date between "2023-06-03" and "2024-03-30";
+
+select o.product , c.customer_name
+from orders o
+join customers c on c.customer_id = o.customer_id
+where product = "Laptop";
