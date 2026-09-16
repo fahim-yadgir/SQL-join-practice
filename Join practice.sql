@@ -203,3 +203,8 @@ select o.product , c.customer_name
 from orders o
 join customers c on c.customer_id = o.customer_id
 where product = "Laptop";
+
+select c.customer_name , c.city , o.product , o.amount ,sum(o.amount) over(order by order_date)as total_amount
+from orders o 
+left join customers c on c.customer_id = o.customer_id
+where o.product = "Mouse"
