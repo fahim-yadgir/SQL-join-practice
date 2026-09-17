@@ -207,4 +207,23 @@ where product = "Laptop";
 select c.customer_name , c.city , o.product , o.amount ,sum(o.amount) over(order by order_date)as total_amount
 from orders o 
 left join customers c on c.customer_id = o.customer_id
-where o.product = "Mouse"
+where o.product = "Mouse";
+
+delimiter $$
+create procedure update_amount 
+(
+in o_id int,
+in o_amount bigint
+)
+begin 
+update orders 
+set amount = 
+		amount + o_amount
+where order_id = o_id;
+select * from orders;
+end$$
+delimiter ;
+
+start transaction;
+call update_amount (101,132);
+commit ;
